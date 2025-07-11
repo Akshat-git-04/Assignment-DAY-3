@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Utility Function Demo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #4299e1;
+      margin-bottom: 40px;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-2px);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2d3748;
+      border-left: 4px solid #4299e1;
+      padding-left: 10px;
+    }
+
+    p, code {
+      color: #4a5568;
+    }
+
+    input[type="text"], textarea {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #cbd5e0;
+      border-radius: 8px;
+      outline: none;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      background-color: #3182ce;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #2b6cb0;
+    }
+
+    pre {
+      background-color: #edf2f7;
+      border-radius: 6px;
+      padding: 15px;
+      font-size: 14px;
+      margin-top: 15px;
+      color: #2d3748;
+      white-space: pre-wrap;
+    }
+
+    code {
+      background-color: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    .example {
+      background-color: #f7fafc;
+      border-left: 4px solid #63b3ed;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #2c5282;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Utility Function Demo</h1>
+
+  <!-- Debounce -->
+  <section>
+    <h2>Debounce</h2>
+    <div class="example">Input: Type in the box — result updates after 500ms of inactivity</div>
+    <input type="text" id="debounce-input" placeholder="Start typing..." />
+    <pre id="debounce-log"></pre>
+  </section>
+
+  <!-- Throttle -->
+  <section>
+    <h2>Throttle</h2>
+    <div class="example">Click the button repeatedly — updates once every 1 second</div>
+    <button id="throttle-btn">Click Me Quickly</button>
+    <pre id="throttle-log"></pre>
+  </section>
+
+  <!-- Deep Merge -->
+  <section>
+    <h2>Deep Merge</h2>
+    <div class="example">
+      <code>const obj1 = { name: "John", address: { city: "NY" }, hobbies: ["reading"] }</code><br />
+      <code>const obj2 = { age: 30, address: { zip: "10001" }, hobbies: ["sports"] }</code>
+    </div>
+    <button id="merge-btn">Merge Objects</button>
+    <pre id="merge-output"></pre>
+  </section>
+
+  <!-- Type Check -->
+  <section>
+    <h2>Type Check</h2>
+    <div class="example">Try: <code>"hello"</code>, <code>42</code>, <code>true</code>, <code>null</code>, <code>{}</code></div>
+    <input type="text" id="type-input" placeholder='Enter a value like "hello", 42, true, null' />
+    <button id="type-check-btn">Check Type</button>
+    <pre id="type-output"></pre>
+  </section>
+
+  <!-- EventEmitter -->
+  <section>
+    <h2>Event Emitter</h2>
+    <div class="example">Click to emit a <code>greet</code> event with your name</div>
+    <button id="emit-btn">Emit 'greet' Event</button>
+    <pre id="event-log"></pre>
+  </section>
+
+  <!-- LocalStorage -->
+  <section>
+    <h2>Local Storage</h2>
+    <div class="example">Stored Object: <code>{ name: "Alice", age: 25 }</code></div>
+    <button id="ls-set-btn">Set User</button>
+    <button id="ls-get-btn">Get User</button>
+    <button id="ls-remove-btn">Remove User</button>
+    <pre id="ls-output"></pre>
+  </section>
+
+  <!-- Array Methods -->
+  <section>
+    <h2>Custom Array Methods</h2>
+    <div class="example">Array: <code>[1, 2, 3, 4, 5]</code></div>
+    <button id="map-btn">Run myMap (x * 2)</button>
+    <button id="filter-btn">Run myFilter (x % 2 === 0)</button>
+    <button id="reduce-btn">Run myReduce (sum)</button>
+    <pre id="array-methods-output"></pre>
+  </section>
+
+  <!-- Cloning -->
+  <section>
+    <h2>Clone Objects</h2>
+    <div class="example">
+      <code>const original = { name: "Jane", address: { city: "Paris", coords: { lat: 48.8566 } } }</code>
+    </div>
+    <button id="shallow-btn">Shallow Clone</button>
+    <button id="deep-btn">Deep Clone</button>
+    <pre id="clone-output"></pre>
+  </section>
+
+  <!-- Currying -->
+  <section>
+    <h2>Curry Function</h2>
+    <div class="example"><code>logMessage(a, b, c) → curriedLog("One")("Two")("Three")</code></div>
+    <button id="curry-btn">Run Curried Logger</button>
+    <pre id="curry-output"></pre>
+  </section>
+
+  <!-- Async Tasks -->
+  <section>
+    <h2>Sequential Async Tasks</h2>
+    <div class="example">Runs 3 tasks in sequence with delays: 1000ms, 500ms, 1500ms</div>
+    <button id="seq-btn">Run Tasks</button>
+    <pre id="seq-output"></pre>
+  </section>
+
+  <script src="./index.js"></script>
+</body>
+</html>
